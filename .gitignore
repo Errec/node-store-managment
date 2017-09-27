@@ -1,6 +1,7 @@
 node_modules/
 temp/
 build/
+config/
 
 # bower_components:
 js/vendor
