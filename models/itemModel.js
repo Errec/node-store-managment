@@ -7,7 +7,6 @@ var itemSchema = new Schema({
   brand: String,
   description: {
     category: String,
-    subcategory: String,
     about: String,
     color : String,
     sex: String,
