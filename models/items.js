@@ -23,15 +23,6 @@ var itemSchema = new Schema({
   }
 });
 
-var financeSchema = new Schema({
-  totalSold: String,
-  totalItemsSold: String,
-  discount: {
-    code: String,
-    quantity: String
-  }
-});
+var Items = mongoose.model('Finance', itemSchema);
 
-var Store = {Items: mongoose.model('Items', itemSchema), Finance: mongoose.model('Finance', financeSchema)};
-
-module.exports = Store;
+module.exports = Items;
