@@ -23,6 +23,6 @@ var itemSchema = new Schema({
   }
 });
 
-var Items = mongoose.model('Finance', itemSchema);
+var Items = mongoose.model('Items', itemSchema);
 
 module.exports = Items;
