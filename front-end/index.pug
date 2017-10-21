@@ -10,5 +10,14 @@ html(lang="en")
     //[if lt IE 9]> <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script><script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script> <![endif]
 
   body
-    h1 Hello World!
+    div.container
+      header.header
+        h2.title Controle de Vendas
+      main.main
+        section.finances
+          include templates/tables/taxas
+          include templates/tables/resumo
+          include templates/tables/projecoes
+        section.item
+      footer.footer
     script(src="js/bundle.min.js")
