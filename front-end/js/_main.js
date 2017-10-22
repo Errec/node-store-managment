@@ -4,7 +4,7 @@ LUCRO_INICIAL = 1.30;
 // Hosted JSON URL
 var URL = 'https://gist.githubusercontent.com/Errec/7460cf1400f0059b00dc246b2da18a6a/raw/3f4c2be419140e199a26708b9a38e6e235ef2294/items.json';
 
-// Request JSON returning a promise obj
+// Request JSON returning a pmainromise obj
 function requestData(url, methodType){
   var promise = new Promise(function(resolve, reject){
     var xhr = new XMLHttpRequest();
@@ -30,4 +30,8 @@ function requestData(url, methodType){
 
 function errorHandler(statusCode){
   alert("Falha ao acessar o servidor: status " + statusCode +  "\nTente novamente mais tarde.");
+}
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
