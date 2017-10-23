@@ -1,4 +1,4 @@
-var myTable = './tables/tabela-raw.csv';
+var myTable = './tables/tabela-raw-2.csv';
 
 var tableToJson = function(inputTable) {
   var fs   = require('fs');
@@ -20,30 +20,24 @@ var tableToJson = function(inputTable) {
     var jsonArr = [];
     matrix.forEach(function(el) {
 
-      for (var i = 0; i < el.length - 1; i++) {
-        if (el[i] === 'empty') {
-          el[i] = '';
-        }
-      }
-
       jsonArr.push({
-        code: el[1],
-        brand: el[0],
+        code  : el[1],
+        brand : el[0],
         description: {
-          category: el[2],
-          about: el[3],
-          color : el[4],
-          sex: el[5],
-          size: el[6]
+          category : el[2],
+          about    : el[3],
+          color    : el[4],
+          sex      : el[5],
+          size     : el[6]
         },
         quantity: {
-          bought: el[7],
-          sold: el[11]
+          bought : el[7],
+          sold   : el[11]
         },
         value: {
-          bought: el[9],
-          sold: el[10],
-          tag: el[8]
+          bought : el[9],
+          sold   : el[10],
+          tag    : el[8]
         }
       });
     });
@@ -52,7 +46,7 @@ var tableToJson = function(inputTable) {
 
   function _writeJsonFile(obj) {
     var json = JSON.stringify(obj);
-    fs.writeFile('./tables/data.json', json, 'utf8');
+    fs.writeFile('./tables/data-2.json', json, 'utf8');
   }
 };
 

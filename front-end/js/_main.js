@@ -2,7 +2,7 @@ TAX = 1.065;
 DOL = 3.30;
 LUCRO_INICIAL = 1.30;
 // Hosted JSON URL
-var URL = 'https://gist.githubusercontent.com/Errec/7460cf1400f0059b00dc246b2da18a6a/raw/3f4c2be419140e199a26708b9a38e6e235ef2294/items.json';
+var URL = 'https://gist.githubusercontent.com/Errec/43c26f23f359659b78d140fe8edf4eb7/raw/d59f1630d790b4e46b7cb5e6889423e952d809ff/items.json';
 
 // Request JSON returning a pmainromise obj
 function requestData(url, methodType){
