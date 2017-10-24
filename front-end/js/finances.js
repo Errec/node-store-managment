@@ -11,7 +11,7 @@ var finances = (function () {
   var projecaoLucoRestante  = document.querySelector('.projecoes__lucro-restante');
 
   requestData(URL, "GET").then(function(data) {
-    calcData = {
+    itemsData = {
       totalItems              : 0,
       totalSales              : 0,
       salesValue              : 0,
@@ -26,27 +26,27 @@ var finances = (function () {
 
     function _processData(data) {
       data.forEach(function(item) {
-        calcData.totalItems              += Number(item.quantity.bought);
-        calcData.totalSales              += Number(item.quantity.sold);
-        calcData.salesValue              += Number(item.quantity.sold * item.value.sold);
-        calcData.originalPriceSalesValue += Number(item.quantity.sold * item.value.bought * TAX * DOL);
-        calcData.purchaseValue           += Number(item.quantity.bought * item.value.bought * TAX * DOL);
-        calcData.totalSalesValuePreview  += Number(item.quantity.bought * item.value.sold);
+        itemsData.totalItems              += Number(item.quantity.bought);
+        itemsData.totalSales              += Number(item.quantity.sold);
+        itemsData.salesValue              += Number(item.quantity.sold * item.value.sold);
+        itemsData.originalPriceSalesValue += Number(item.quantity.sold * item.value.bought * TAX * DOL);
+        itemsData.purchaseValue           += Number(item.quantity.bought * item.value.bought * TAX * DOL);
+        itemsData.totalSalesValuePreview  += Number(item.quantity.bought * item.value.sold);
       });
     }
 
     function _renderResumo() {
-      totalItems.textContent         = calcData.totalItems;
-      totalVendidos.textContent      = calcData.totalSales + '(' + (calcData.totalSales / calcData.totalItems * 100).toFixed(0) + '%)';
-      valorVendido.textContent       = 'R$ ' + numberWithCommas(calcData.salesValue.toFixed(2));
-      valorPago.textContent          = 'R$ ' + numberWithCommas(calcData.purchaseValue.toFixed(2));
-      valorTotalPrevisto.textContent = 'R$ ' + numberWithCommas(calcData.totalSalesValuePreview) + '(' + ((calcData.totalSalesValuePreview / calcData.purchaseValue - 1) * 100).toFixed(2) + '%)';
-      lucroMedio.textContent         = ((calcData.salesValue / calcData.originalPriceSalesValue - 1) * 100).toFixed(2) + '%';
+      totalItems.textContent         = itemsData.totalItems;
+      totalVendidos.textContent      = itemsData.totalSales + '(' + (itemsData.totalSales / itemsData.totalItems * 100).toFixed(0) + '%)';
+      valorVendido.textContent       = 'R$ ' + numberWithCommas(itemsData.salesValue.toFixed(2));
+      valorPago.textContent          = 'R$ ' + numberWithCommas(itemsData.purchaseValue.toFixed(2));
+      valorTotalPrevisto.textContent = 'R$ ' + numberWithCommas(itemsData.totalSalesValuePreview) + '(' + ((itemsData.totalSalesValuePreview / itemsData.purchaseValue - 1) * 100).toFixed(2) + '%)';
+      lucroMedio.textContent         = ((itemsData.salesValue / itemsData.originalPriceSalesValue - 1) * 100).toFixed(2) + '%';
     }
 
     function _renderProjecoes(profit) {
-      projecaoValorTotal.textContent = 'R$ ' + numberWithCommas(((profit + 1 ) * calcData.purchaseValue).toFixed(2));
-      projecaoValorRestante.textContent = 'R$ ' + numberWithCommas(((profit + 1 ) * (calcData.purchaseValue - calcData.originalPriceSalesValue)).toFixed(2));
+      projecaoValorTotal.textContent = 'R$ ' + numberWithCommas(((profit + 1 ) * itemsData.purchaseValue).toFixed(2));
+      projecaoValorRestante.textContent = 'R$ ' + numberWithCommas(((profit + 1 ) * (itemsData.purchaseValue - itemsData.originalPriceSalesValue)).toFixed(2));
     }
   }, errorHandler);
 })();
