@@ -12,8 +12,8 @@ var items = (function () {
     _populateSelect(itemsData.brands);
 
     itemSelect.addEventListener('change', function() {
-      while (itemList.firstChild) {
-        itemList.removeChild(itemList.firstChild);
+      while (itemList.children.length > 1) {
+        itemList.removeChild(itemList.lastChild);
       }
       _populateItemList(data, this.value);
     }, false);
