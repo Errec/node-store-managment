@@ -37,6 +37,8 @@ var items = (function () {
       data.forEach(function (item) {
         if (item.brand === brand || brand == 'Todas') {
           var newTrNode = document.createElement("tr");
+          newTrNode.setAttribute("class", "item-list__tr");
+          newTrNode.setAttribute("data-code", item.code);
 
           var tdCode       = document.createElement("td");
           var tdQuantidade = document.createElement("td");
