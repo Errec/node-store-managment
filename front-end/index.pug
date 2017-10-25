@@ -22,7 +22,9 @@ html(lang="en")
           h2.item__title Informação do Produto
           h3.item__filtro Selecione a Marca
           select.item__select
-            option.item__option(value="Todas" selected="selected") Todas
-          include templates/tables/item
+            option.item__option(value="" selected="selected") ---
+            option.item__option(value="Todas") Todas
+          include templates/lists/items-list
+          //- include templates/tables/item
       footer.footer
     script(src="js/bundle.min.js")
