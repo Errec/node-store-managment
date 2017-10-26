@@ -1,6 +1,17 @@
 var items = (function () {
-  var itemSelect = document.querySelector('.item__select');
-  var itemList   = document.querySelector('.item-list');
+  var itemSelect     = document.querySelector('.item__select');
+  var itemList       = document.querySelector('.item-list');
+
+  var itemCode       = document.querySelector('.item__code');
+  var itemPreco      = document.querySelector('.item__preco');
+  var itemCategoria  = document.querySelector('.item__categoria');
+  var itemDescricao  = document.querySelector('.item__descricao');
+  var itemCor        = document.querySelector('.item__cor');
+  var itemSexo       = document.querySelector('.item__sexo');
+  var itemTamanho    = document.querySelector('.item__tamanho');
+  var itemQuantidade = document.querySelector('.item__quantidade');
+  var itemLucro      = document.querySelector('.item__lucro');
+  var itemValorMin   = document.querySelector('.item__valor_min');
 
   requestData(URL, "GET").then(function (data) {
     console.log(data);
@@ -17,6 +28,35 @@ var items = (function () {
       }
       _populateItemList(data, this.value);
     }, false);
+
+    itemList.addEventListener("click", _getItemCode, false);
+
+    function _getItemCode(e) {
+      if (e.target !== e.currentTarget) {
+        var itemCode = e.target.parentElement.dataset.code;
+        if (itemCode) {
+          _populateModal(data, itemCode);
+        }
+      }
+    }
+
+    function _populateModal (data, code) {
+      data.forEach( function(item) {
+        if (item.code === code) {
+          itemCode.textContent       = item.code || 'N/A';
+          itemPreco.textContent      = 'R$' + item.value.sold;
+          itemCategoria.textContent  = item.description.category || 'N/A';
+          itemDescricao.textContent  = item.description.about || 'N/A';
+          itemCor.textContent        = item.description.color || 'N/A';
+          itemSexo.textContent       = item.description.sex || 'N/A';
+          itemTamanho.textContent    = item.description.size || 'N/A';
+          itemQuantidade.textContent = item.quantity.bought || 'N/A';
+          itemLucro.textContent      = (100 * Number(item.value.sold) / (Number(item.value.bought) * TAX * DOL) - 100).toFixed(0) + '%';
+          itemValorMin.textContent   = 'R$' + ( Number(item.value.bought) * TAX * DOL * 2.3).toFixed(2)  + '(130%)'; // TODO: dynamic
+          return;
+        }
+      });
+    }
 
     function _processData (data) {
       data.forEach(function (item) {
