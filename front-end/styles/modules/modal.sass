@@ -1,17 +1,28 @@
 .modal
+  opacity: 0
+  pointer-events: none
   position: fixed
   left: 0
   right: 0
   bottom: 0
   top: 0
-  margin: auto auto
+  margin: auto 20%
+  max-width: 500px
+  min-width: 350px
+  height: 300px
   z-index: 100
-  width: 500px
-  height: 280px
-  background-color: #26FF93
+  background-color: rgba( pink, .7 )
   color: black
   font-weight: bold
 
+.modal__close-btn
+  position: relative
+  top: 5%
+  left: 87%
+  width: 40px
+  height: 40px
+  background-color: red
+
 .modal--show
   opacity: 1
-  pointer-events: auto
+  pointer-events: all

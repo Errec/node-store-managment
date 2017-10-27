@@ -1,6 +1,8 @@
 var items = (function () {
   var itemSelect     = document.querySelector('.item__select');
   var itemList       = document.querySelector('.item-list');
+  var modal          = document.querySelector('.modal');
+  var modalCloseBtn  = document.querySelector('.modal__close-btn');
 
   var itemCode       = document.querySelector('.item__code');
   var itemPreco      = document.querySelector('.item__preco');
@@ -30,14 +32,20 @@ var items = (function () {
     }, false);
 
     itemList.addEventListener("click", _getItemCode, false);
+    modalCloseBtn.addEventListener("click", _toggleModal, false);
 
     function _getItemCode(e) {
       if (e.target !== e.currentTarget) {
         var itemCode = e.target.parentElement.dataset.code;
         if (itemCode) {
           _populateModal(data, itemCode);
+          _toggleModal();
         }
       }
+    }
+
+    function _toggleModal () {
+      modal.classList.toggle('modal--show');
     }
 
     function _populateModal (data, code) {
