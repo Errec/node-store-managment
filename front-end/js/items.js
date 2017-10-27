@@ -4,16 +4,16 @@ var items = (function () {
   var modal          = document.querySelector('.modal');
   var modalCloseBtn  = document.querySelector('.modal__close-btn');
 
-  var itemCode       = document.querySelector('.item__code');
-  var itemPreco      = document.querySelector('.item__preco');
-  var itemCategoria  = document.querySelector('.item__categoria');
-  var itemDescricao  = document.querySelector('.item__descricao');
-  var itemCor        = document.querySelector('.item__cor');
-  var itemSexo       = document.querySelector('.item__sexo');
-  var itemTamanho    = document.querySelector('.item__tamanho');
-  var itemQuantidade = document.querySelector('.item__quantidade');
-  var itemLucro      = document.querySelector('.item__lucro');
-  var itemValorMin   = document.querySelector('.item__valor_min');
+  var itemCode       = document.querySelector('.modal__code');
+  var itemPreco      = document.querySelector('.modal__preco');
+  var itemCategoria  = document.querySelector('.modal__categoria');
+  var itemDescricao  = document.querySelector('.modal__descricao');
+  var itemCor        = document.querySelector('.modal__cor');
+  var itemSexo       = document.querySelector('.modal__sexo');
+  var itemTamanho    = document.querySelector('.modal__tamanho');
+  var itemQuantidade = document.querySelector('.modal__quantidade');
+  var itemLucro      = document.querySelector('.modal__lucro');
+  var itemValorMin   = document.querySelector('.modal__valor_min');
 
   requestData(URL, "GET").then(function (data) {
     console.log(data);
