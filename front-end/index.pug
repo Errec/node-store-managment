@@ -11,7 +11,9 @@ html(lang="en")
   body
     div.container
       header.header
+        img(src="/img/logo.png", alt="logo")
         h1.title Controle de Vendas
+
       main.main
         section.finances
           h2.finances__title Resumo de Vendas
@@ -25,7 +27,10 @@ html(lang="en")
             option.item__option(value="" selected="selected") ---
             option.item__option(value="Todas") Todas
           include templates/lists/items-list
+
       footer.footer
+
       div.modal
         include templates/item-modal
+
     script(src="js/bundle.min.js")
