@@ -1,0 +1,36 @@
+.header
+  width: 100%
+  display: inline-block
+  background-color: #bec2b04d
+
+.header__logo
+  float: left
+  margin: 18px 48px
+  width: 300px
+  height: auto
+
+.header__nav
+  float: right
+  margin: 30px 48px
+
+.header__finances, .header__item
+  cursor: pointer
+  border: solid 2px white
+  border-radius: 3px
+  width: 60px
+  height: 60px
+  transition: background-color .2s ease-in-out
+  background:
+    color: transparent
+    image: url(../img/finances-icon.svg)
+    size: 90%
+    position: center
+    repeat: no-repeat
+  &:hover
+    background-color: rgba(#BC2E24, 0.2)
+
+.header__item
+  margin-left: 12px
+  background:
+    size: 75%
+    image: url(../img/item-icon.svg)
