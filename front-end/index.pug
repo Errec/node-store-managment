@@ -11,9 +11,10 @@ html(lang="en")
   body
     div.container
       header.header
-        img(src="/img/logo.png", alt="logo")
-        h1.title Controle de Vendas
-
+        img.header__logo(src="/img/logo.png", alt="logo")
+        nav.header__nav
+          button.header__finances FN
+          button.header__item IT
       main.main
         section.finances
           h2.finances__title Resumo de Vendas
