@@ -10,6 +10,13 @@ html(lang="en")
 
   body
     div.container
+      div.intro
+        div.intro__logo
+        div.intro__btn-wrapper
+          div.intro__finances
+            p.intro__finances-text Resumo financeiro
+          div.intro__item
+            p.intro__item-text Busca de produtos
       header.header
         img.header__logo(src="/img/logo.png", alt="logo")
         nav.header__nav
@@ -28,9 +35,7 @@ html(lang="en")
             option.item__option(value="" selected="selected") ---
             option.item__option(value="Todas") Todas
           include templates/lists/items-list
-
       footer.footer
-
       div.modal
         include templates/item-modal
 
