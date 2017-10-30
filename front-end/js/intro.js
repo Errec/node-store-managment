@@ -1,4 +1,5 @@
 var intro = (function() {
+   var background       = document.querySelector('.background');
    var introLogo        = document.querySelector('.intro__logo');
    var introItem        = document.querySelector('.intro__item');
    var introItemBtn     = document.querySelector('.header__item');
@@ -24,5 +25,6 @@ var intro = (function() {
     introItem.classList.add('intro__item--hide');
     introFinances.classList.add('intro__finances--hide');
     header.classList.add('header--show');
+    background.classList.add('background--zoom');
    }
  })();

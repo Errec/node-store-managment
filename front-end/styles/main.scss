@@ -4,7 +4,7 @@
 html, body
   height: 100%
   width: 100%
-  overflow-x: hidden
+  overflow: hidden
 
 p, h1, h2, h3, li, ul
   margin: 0
@@ -14,12 +14,8 @@ p, h1, h2, h3, li, ul
   position: relative
   height: 100%
   width: 100%
-  background:
-    image: url(../../img/bg.jpg)
-    size: cover
-    repeat: no-repeat
-    position: center
 
+@import 'modules/background.sass'
 @import 'modules/intro.sass'
 @import 'modules/header.sass'
 @import 'modules/item.sass'
