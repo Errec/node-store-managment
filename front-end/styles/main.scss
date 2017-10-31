@@ -15,6 +15,18 @@ p, h1, h2, h3, li, ul
   height: 100%
   width: 100%
 
+.main
+  padding: 0
+  max-width: 800px
+  height: 84vh
+  z-index: 500
+  position: absolute
+  left: 2%
+  right: 2%
+  top: 0
+  bottom: 0
+  margin: auto auto
+
 @import 'modules/background.sass'
 @import 'modules/intro.sass'
 @import 'modules/header.sass'
