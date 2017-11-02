@@ -1,6 +1,6 @@
 var items = (function () {
   var itemSelect     = document.querySelector('.item__select');
-  var itemList       = document.querySelector('.item-list');
+  var tableBody      = document.querySelector('.item-table__body');
   var modal          = document.querySelector('.modal');
   var modalCloseBtn  = document.querySelector('.modal__close-btn');
 
@@ -25,13 +25,13 @@ var items = (function () {
     _populateSelect(itemsData.brands);
 
     itemSelect.addEventListener('change', function() {
-      while (itemList.children.length > 1) {
-        itemList.removeChild(itemList.lastChild);
+      while (tableBody.children.length > 0) {
+        tableBody.removeChild(tableBody.lastChild);
       }
       _populateItemList(data, this.value);
     }, false);
 
-    itemList.addEventListener("click", _getItemCode, false);
+    tableBody.addEventListener("click", _getItemCode, false);
     modalCloseBtn.addEventListener("click", _toggleModal, false);
 
     function _getItemCode(e) {
@@ -84,29 +84,39 @@ var items = (function () {
     function _populateItemList (data, brand) {
       data.forEach(function (item) {
         if (item.brand === brand || brand == 'Todas') {
-          var newTrNode = document.createElement("tr");
-          newTrNode.setAttribute("class", "item-list__tr");
-          newTrNode.setAttribute("data-code", item.code);
+          var newItemElement = document.createElement("div");
+          newItemElement.setAttribute("class", "item-table__item");
+          newItemElement.setAttribute("data-code", item.code);
 
-          var tdCode       = document.createElement("td");
-          var tdQuantidade = document.createElement("td");
-          var tdCor        = document.createElement("td");
-          var tdValor      = document.createElement("td");
-          var tdTamanho    = document.createElement("td");
-          var tdSexo       = document.createElement("td");
-          var tdLucro      = document.createElement("td");
+          var tdCode       = document.createElement("div");
+          var tdQuantidade = document.createElement("div");
+          var tdCategoria  = document.createElement("div");
+          var tdCor        = document.createElement("div");
+          var tdValor      = document.createElement("div");
+          var tdTamanho    = document.createElement("div");
+          var tdSexo       = document.createElement("div");
+          var tdLucro      = document.createElement("div");
 
-          itemList.append(newTrNode);
+          tableBody.append(newItemElement);
 
-          tdCode.textContent       = item.code;
+          tdCode.textContent = item.code;
+          tdCode.setAttribute("class", "item-table__item-cod item-table__item-cell");
           tdQuantidade.textContent = item.quantity.bought;
-          tdCor.textContent        = item.description.color;
-          tdTamanho.textContent    = item.description.size;
-          tdSexo.textContent       = item.description.sex;
-          tdValor.textContent      = 'R$' + item.value.sold;
-          tdLucro.textContent      = (100 * Number(item.value.sold) / (Number(item.value.bought) * TAX * DOL) - 100).toFixed(0) + '%';
+          tdQuantidade.setAttribute("class", "item-table__item-qtde item-table__item-cell");
+          tdCategoria.textContent = item.description.category || '-';
+          tdCategoria.setAttribute("class", "item-table__item-categoria item-table__item-cell");
+          tdCor.textContent = item.description.color || '-';
+          tdCor.setAttribute("class", "item-table__item-cor item-table__item-cell");
+          tdTamanho.textContent = item.description.size || '-';
+          tdTamanho.setAttribute("class", "item-table__item-tamanho item-table__item-cell");
+          tdSexo.textContent = item.description.sex || '-';
+          tdSexo.setAttribute("class", "item-table__item-sexo item-table__item-cell");
+          tdValor.textContent = 'R$' + item.value.sold;
+          tdValor.setAttribute("class", "item-table__item-valor item-table__item-cell");
+          tdLucro.textContent = (100 * Number(item.value.sold) / (Number(item.value.bought) * TAX * DOL) - 100).toFixed(0) + '%';
+          tdLucro.setAttribute("class", "item-table__item-lucro item-table__item-cell");
 
-          newTrNode.append(tdCode, tdQuantidade, tdCor, tdTamanho, tdSexo, tdValor, tdLucro);
+          newItemElement.append(tdCode, tdQuantidade, tdCategoria, tdCor, tdTamanho, tdSexo, tdValor, tdLucro);
         }
       });
     }

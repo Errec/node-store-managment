@@ -16,15 +16,16 @@ p, h1, h2, h3, li, ul
   width: 100%
 
 .main
-  padding: 0
-  max-width: 800px
-  height: 84vh
+  background-color: orangered
+  max-width: 840px
+  height: 80vh
   z-index: 500
   position: absolute
+  bottom: 2vh
   left: 2%
   right: 2%
-  top: 0
-  bottom: 0
+  top: 16vh
+  outline: solid black 5px
   margin: auto auto
 
 @import 'modules/background.sass'
@@ -33,3 +34,9 @@ p, h1, h2, h3, li, ul
 @import 'modules/item.sass'
 @import 'modules/finances.sass'
 @import 'modules/modal.sass'
+
+.intro
+  display: none
+.header
+  opacity: 1
+  transform: translate3D(0, 0, 0)

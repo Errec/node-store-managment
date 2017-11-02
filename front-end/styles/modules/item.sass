@@ -1,8 +1,50 @@
 .item
-  height: 500px
-  height: 80%;
-.item-list
-  display: block;
-  overflow-y: scroll;
-  height: 100%;
+  position: absolute
+  width: 100%
+  height: 100%
+  background-color: pink
 
+.item__table
+  background-color: yellow
+
+.item-table__head
+  display: flex
+  flex-direction: row
+
+.item-table__head-cell, .item-table__item-cell
+  outline: solid 1px red
+.item-table__body
+  height: 300px
+  overflow-y: scroll
+  &::-webkit-scrollbar
+    display: none
+  -ms-overflow-style: none
+  overflow: -moz-scrollbars-none
+.item-table__item
+  display: flex
+  flex-direction: row
+  flex-wrap: nowrap
+.item-table__item-cod
+  width: 8%
+  // flex: 1.4
+.item-table__item-qtde
+  width: 5%
+  // flex: 1
+.item-table__item-categoria
+  width: 22%
+  // flex: 3
+.item-table__item-cor
+  width: 22%
+  // flex: 3
+.item-table__item-tamanho
+  width: 10%
+  // flex: 2
+.item-table__item-sexo
+  width: 15%
+  // flex: 1
+.item-table__item-valor
+  width: 10%
+  // flex: 2
+.item-table__item-lucro
+  width: 8%
+  // flex: 2
