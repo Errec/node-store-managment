@@ -14,10 +14,10 @@ var rename             = require("gulp-rename");
 var sass               = require('gulp-sass');
 var sourcemaps         = require('gulp-sourcemaps');
 var uglify             = require('gulp-uglify');
+var fs                 = require('fs');  // ExistsSync var to check if font directory patch exist
 // sudo npm install gulp-uglify browser-sync gulp-plumber gulp-autoprefixer gulp-sass gulp-pug gulp-imagemin gulp-cache gulp-clean-css gulp-sourcemaps gulp-concat beeper gulp-util gulp-rename gulp-notify --save-dev
 var jsVendorFiles      = [];             // Holds the js vendor files to be concatenated
 var myJsFiles          = ['js/*.js'];    // Holds the js files to be concatenated
-var fs                 = require('fs');  // ExistsSync var to check if font directory patch exist
 var bowerDirectory     = getBowerDirectory();
 var bootstrapJSPath    = bowerDirectory + "bootstrap/dist/js/bootstrap.min.js";
 var bootstrapCSSPath   = bowerDirectory + "bootstrap/dist/css/bootstrap.min.css";
@@ -35,9 +35,12 @@ var onError            = function(err) { // Custom error msg with beep sound and
 };
 
 function getBowerDirectory() {
+  var bowerComponents = "./bower_components";
   if(fs.existsSync('.bowerrc')) {
     var bowerrc = JSON.parse(fs.readFileSync('.bowerrc').toString());
     return bowerrc.directory;
+  } else if (fs.existsSync(bowerComponents)) {
+    return bowerComponents + '/';
   } else {
     return '';
   }
