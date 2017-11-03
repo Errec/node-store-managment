@@ -1,18 +1,24 @@
 .item
+  opacity: 0
+  pointer-events: none
   position: absolute
   width: 100%
   height: 100%
-  background-color: pink
+
+.item--show
+  opacity: 1
+  pointer-events: auto
 
 .item__table
-  background-color: yellow
+  background-color: rgba(#151515, .7)
+  color: white
 
 .item-table__head
   display: flex
   flex-direction: row
 
 .item-table__head-cell, .item-table__item-cell
-  outline: solid 1px red
+  border: solid 1px grey
 .item-table__body
   height: 300px
   overflow-y: scroll
