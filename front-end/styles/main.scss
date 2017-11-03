@@ -6,7 +6,7 @@ html, body
   width: 100%
   overflow: hidden
 
-p, h1, h2, h3, li, ul
+p, h1, h2, h3, li, ul, select, option
   margin: 0
   padding: 0
 
@@ -33,6 +33,7 @@ p, h1, h2, h3, li, ul
 @import 'modules/finances.sass'
 @import 'modules/modal.sass'
 
+@import 'media/max-width-720px.sass'
 // .intro
 //   display: none
 // .header
