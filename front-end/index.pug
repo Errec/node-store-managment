@@ -25,11 +25,11 @@ html(lang="en")
           include templates/tables/resumo
           include templates/tables/projecoes
         section.item
-          h2.item__title Informação do Produto
-          h3.item__filtro Selecione a Marca
-          select.item__select
-            option.item__option(value="" selected="selected") ---
-            option.item__option(value="Todas") Todas
+          //- h2.item__title Informação do Produto
+          div.item__filtro
+            select.item__select
+              option.item__option(value="" selected="selected") ---
+              option.item__option(value="Todas") Todas
           include templates/lists/items-list
       //- footer.footer
       div.modal
