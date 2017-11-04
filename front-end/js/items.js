@@ -88,14 +88,14 @@ var items = (function () {
           newItemElement.setAttribute("class", "item-table__item");
           newItemElement.setAttribute("data-code", item.code);
 
-          var tdCode       = document.createElement("div");
-          var tdQuantidade = document.createElement("div");
-          var tdCategoria  = document.createElement("div");
-          var tdCor        = document.createElement("div");
-          var tdValor      = document.createElement("div");
-          var tdTamanho    = document.createElement("div");
-          var tdSexo       = document.createElement("div");
-          var tdLucro      = document.createElement("div");
+          var tdCode       = document.createElement("span");
+          var tdQuantidade = document.createElement("span");
+          var tdCategoria  = document.createElement("span");
+          var tdCor        = document.createElement("span");
+          var tdValor      = document.createElement("span");
+          var tdTamanho    = document.createElement("span");
+          var tdSexo       = document.createElement("span");
+          var tdLucro      = document.createElement("span");
 
           tableBody.append(newItemElement);
 
