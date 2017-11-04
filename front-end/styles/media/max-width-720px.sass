@@ -1,22 +1,33 @@
 @media screen and (max-width: 720px)
+  .header__logo-wrapper
+    width: 48px
+    height: 48px
+    border-radius: 50%
+    position: absolute
+    left: 4%
+    margin: 0
+    top: 52%
+    transform: translateY(-50%)
   .header__logo
     display: none
   .header__logo--small
-    display: block
-    width: 38px
-    height: auto
     position: absolute
-    left: 8%
-    top: 60%
-    transform: translateY(-50%)
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    transform: translate3d(-5%, 0, 0)
+    margin: auto auto
+    width: 80%
+    display: block
   .header
     height: 12vh
     background-color: transparent
   .header__nav
     margin: 4% 5% 2% 0%
   .header__finances, .header__item
-    height: 48px
-    width: 48px
+    height: 54px
+    width: 54px
 
   .intro__finances, .intro__item
     width: 100%
@@ -29,6 +40,7 @@
   .item__filtro
     border-left: none
     left: -2px
+    top: 6px
     width: 70%
     height: 45px
 
@@ -44,7 +56,7 @@
     border-right: none
 
   .finances
-    height: 75vh
+    height: 76.2vh
     font-size: 14px
 
   .item-table__head-cell

@@ -13,8 +13,9 @@ html(lang="en")
       include templates/intro
       div.background
       header.header
-        img.header__logo(src="/img/logo.png", alt="logo")
-        img.header__logo--small(src="/img/peper.png", alt="logo")
+        div.header__logo-wrapper
+          img.header__logo(src="/img/logo.png", alt="logo")
+          img.header__logo--small(src="/img/peper.png", alt="logo")
         nav.header__nav
           button.header__finances
           button.header__item
@@ -25,7 +26,6 @@ html(lang="en")
           include templates/tables/resumo
           include templates/tables/projecoes
         section.item
-          //- h2.item__title Informação do Produto
           div.item__filtro
             select.item__select
               option.item__option(value="" selected="selected") ---
