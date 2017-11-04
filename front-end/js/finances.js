@@ -12,6 +12,7 @@ var finances = (function () {
 
   requestData(URL, "GET").then(function(data) {
     itemsData = {
+      brands                  :[],
       totalItems              : 0,
       totalSales              : 0,
       salesValue              : 0,

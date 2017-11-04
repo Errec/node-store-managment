@@ -29,7 +29,8 @@
   border-right: solid 1px grey
   padding-top: 4px
   padding-left: 2px
-
+  &:last-child
+    border-right: none
 .item-table__body
   transform: translate3d(0, 0, 0)
   height: 62vh
@@ -40,13 +41,21 @@
   overflow: -moz-scrollbars-none
 
 .item-table__item
+  cursor: pointer
   display: flex
   flex-direction: row
   flex-wrap: nowrap
   height: 28px
+  transition: all 0.2s ease-in-out
+  &:hover
+    font-weight: bold
+    background-color: rgba(#151515, .6)
   &:nth-child(2n)
-    background-color: rgba(red, .6)
-
+    background-color: rgba(#E31D1D, .6)
+    &:hover
+      background-color: rgba(#E31D1D, .9)
+  &:last-child
+    border-bottom: solid 1px grey
 
 .item-table__item-cod
   width: 8%
@@ -64,3 +73,8 @@
   width: 10%
 .item-table__item-lucro
   width: 8%
+
+.item-table__item
+  .item-table__item-lucro, .item-table__item-valor, .item-table__item-qtde
+    text-align: right
+    padding-right: 3px
