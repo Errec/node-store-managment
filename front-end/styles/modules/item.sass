@@ -4,53 +4,63 @@
   position: absolute
   width: 100%
   height: 100%
+  transition: opacity 0.3s ease-in-out
 
 .item--show
   opacity: 1
   pointer-events: auto
 
 .item__table
-  background-color: rgba(#151515, .7)
   color: white
+  background-color: rgba(#151515, .7)
 
 .item-table__head
+  overflow: hidden
   display: flex
   flex-direction: row
+  background-color: rgba(black, .7)
+  height: 30px
+  p
+    color: white
+    font-weight: bold
+    transform: translateY(50%)
 
 .item-table__head-cell, .item-table__item-cell
-  border: solid 1px grey
+  border-right: solid 1px grey
+  padding-top: 4px
+  padding-left: 2px
+
 .item-table__body
-  height: 300px
+  transform: translate3d(0, 0, 0)
+  height: 62vh
   overflow-y: scroll
   &::-webkit-scrollbar
     display: none
   -ms-overflow-style: none
   overflow: -moz-scrollbars-none
+
 .item-table__item
   display: flex
   flex-direction: row
   flex-wrap: nowrap
+  height: 28px
+  &:nth-child(2n)
+    background-color: rgba(red, .6)
+
+
 .item-table__item-cod
   width: 8%
-  // flex: 1.4
 .item-table__item-qtde
   width: 5%
-  // flex: 1
 .item-table__item-categoria
   width: 22%
-  // flex: 3
 .item-table__item-cor
   width: 22%
-  // flex: 3
 .item-table__item-tamanho
   width: 10%
-  // flex: 2
 .item-table__item-sexo
   width: 15%
-  // flex: 1
 .item-table__item-valor
   width: 10%
-  // flex: 2
 .item-table__item-lucro
   width: 8%
-  // flex: 2
