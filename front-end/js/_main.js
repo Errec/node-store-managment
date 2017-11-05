@@ -1,6 +1,5 @@
 TAX = 1.065;
 DOL = 3.30;
-LUCRO_INICIAL = 1.30;
 // Hosted JSON URL
 var URL = 'https://gist.githubusercontent.com/Errec/43c26f23f359659b78d140fe8edf4eb7/raw/d59f1630d790b4e46b7cb5e6889423e952d809ff/items.json';
 

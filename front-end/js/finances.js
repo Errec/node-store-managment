@@ -7,6 +7,7 @@ var finances = (function () {
   var lucroMedio            = document.querySelector('.resumo__lucro-medio');
   var projecaoValorTotal    = document.querySelector('.projecoes__valor-total');
   var projecaoLucoTotal     = document.querySelector('.projecoes__lucro-total');
+  var projecaoInput         = document.querySelector('.projecoes__input');
   var projecaoValorRestante = document.querySelector('.projecoes__valor-restante');
   var projecaoLucoRestante  = document.querySelector('.projecoes__lucro-restante');
 
@@ -21,9 +22,15 @@ var finances = (function () {
       totalSalesValuePreview  : 0,
       remainValue             : 0
     };
+
+
     _processData(data);
     _renderResumo();
-    _renderProjecoes(LUCRO_INICIAL);
+    _renderProjecoes(projecaoInput.value);
+
+    projecaoInput.addEventListener('input', function (e) {
+      return _renderProjecoes(this.value);
+    });
 
     function _processData(data) {
       data.forEach(function(item) {
@@ -46,6 +53,8 @@ var finances = (function () {
     }
 
     function _renderProjecoes(profit) {
+      console.log(profit)
+      profit = Number(profit) / 100;
       projecaoValorTotal.textContent = 'R$ ' + numberWithCommas(((profit + 1 ) * itemsData.purchaseValue).toFixed(2));
       projecaoValorRestante.textContent = 'R$ ' + numberWithCommas(((profit + 1 ) * (itemsData.purchaseValue - itemsData.originalPriceSalesValue)).toFixed(2));
     }
