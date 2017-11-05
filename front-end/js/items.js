@@ -1,19 +1,21 @@
 var items = (function () {
-  var itemSelect     = document.querySelector('.item__select');
-  var tableBody      = document.querySelector('.item-table__body');
-  var modal          = document.querySelector('.modal');
-  var modalCloseBtn  = document.querySelector('.modal__close-btn');
+  var itemSelect         = document.querySelector('.item__select');
+  var tableBody          = document.querySelector('.item-table__body');
+  var modal              = document.querySelector('.modal');
+  var modalCloseBtn      = document.querySelector('.modal__close-btn');
 
-  var itemCode       = document.querySelector('.modal__code');
-  var itemPreco      = document.querySelector('.modal__preco');
-  var itemCategoria  = document.querySelector('.modal__categoria');
-  var itemDescricao  = document.querySelector('.modal__descricao');
-  var itemCor        = document.querySelector('.modal__cor');
-  var itemSexo       = document.querySelector('.modal__sexo');
-  var itemTamanho    = document.querySelector('.modal__tamanho');
-  var itemQuantidade = document.querySelector('.modal__quantidade');
-  var itemLucro      = document.querySelector('.modal__lucro');
-  var itemValorMin   = document.querySelector('.modal__valor_min');
+  var itemCode           = document.querySelector('.modal__code');
+  var itemPreco          = document.querySelector('.modal__preco');
+  var itemCategoria      = document.querySelector('.modal__categoria');
+  var itemDescricao      = document.querySelector('.modal__descricao');
+  var itemCor            = document.querySelector('.modal__cor');
+  var itemSexo           = document.querySelector('.modal__sexo');
+  var itemTamanho        = document.querySelector('.modal__tamanho');
+  var itemQuantidade     = document.querySelector('.modal__quantidade');
+  var itemLucro          = document.querySelector('.modal__lucro');
+  var itemValorMin       = document.querySelector('.modal__valor-min');
+  var itemInputNovoValor = document.querySelector('.modal__novo-valor-input');
+  var itemNovoValorLucro = document.querySelector('.modal__novo-valor-lucro');
 
   requestData(URL, "GET").then(function (data) {
     console.log(data);
@@ -33,6 +35,7 @@ var items = (function () {
 
     tableBody.addEventListener("click", _getItemCode, false);
     modalCloseBtn.addEventListener("click", _toggleModal, false);
+    itemInputNovoValor.addEventListener('input', _getNewProfit);
 
     function _getItemCode(e) {
       if (e.target !== e.currentTarget) {
@@ -56,14 +59,36 @@ var items = (function () {
           itemCategoria.textContent  = item.description.category || 'N/A';
           itemDescricao.textContent  = item.description.about || 'N/A';
           itemCor.textContent        = item.description.color || 'N/A';
-          itemSexo.textContent       = item.description.sex || 'N/A';
-          itemTamanho.textContent    = item.description.size || 'N/A';
+          itemSexo.textContent       = item.description.size || 'N/A';
+          itemTamanho.textContent    = item.description.sex || 'N/A';
           itemQuantidade.textContent = item.quantity.bought || 'N/A';
           itemLucro.textContent      = (100 * Number(item.value.sold) / (Number(item.value.bought) * TAX * DOL) - 100).toFixed(0) + '%';
           itemValorMin.textContent   = 'R$' + ( Number(item.value.bought) * TAX * DOL * 2.3).toFixed(2)  + '(130%)'; // TODO: dynamic
+          itemInputNovoValor.value   = 'R$';
           return;
         }
       });
+    }
+
+    function _getNewProfit(input) {
+      var value = input.target.value;
+      if(value.substring(0,2) !== 'R$') {
+        input.target.value = 'R$';
+        return;
+      }
+      if(!Number(value.substring(2,value.length))) {
+        if(value.substring(0,value.length - 1).length === 1) {
+          input.target.value = 'R$';
+          itemNovoValorLucro.textContent = '0%';
+        } else {
+          input.target.value = value.substring(0,value.length - 1);
+        }
+        return;
+      } else {
+        var newValueInput = Number(value.substring(2,value.length));
+        var newProfit = Number(itemLucro.textContent.substring(0, itemLucro.textContent.length - 2)) * newValueInput / itemPreco.textContent.substring(2, itemPreco.textContent.length - 1);
+        itemNovoValorLucro.textContent = newProfit.toFixed(0) + '%';
+      }
     }
 
     function _processData (data) {
@@ -107,9 +132,9 @@ var items = (function () {
           tdCategoria.setAttribute("class", "item-table__item-categoria item-table__item-cell");
           tdCor.textContent = item.description.color || '-';
           tdCor.setAttribute("class", "item-table__item-cor item-table__item-cell");
-          tdTamanho.textContent = item.description.size || '-';
+          tdTamanho.textContent = item.description.sex || '-';
           tdTamanho.setAttribute("class", "item-table__item-tamanho item-table__item-cell");
-          tdSexo.textContent = item.description.sex || '-';
+          tdSexo.textContent = item.description.size || '-';
           tdSexo.setAttribute("class", "item-table__item-sexo item-table__item-cell");
           tdValor.textContent = 'R$' + item.value.sold;
           tdValor.setAttribute("class", "item-table__item-valor item-table__item-cell");

@@ -53,7 +53,6 @@ var finances = (function () {
     }
 
     function _renderProjecoes(profit) {
-      console.log(profit)
       profit = Number(profit) / 100;
       projecaoValorTotal.textContent = 'R$ ' + numberWithCommas(((profit + 1 ) * itemsData.purchaseValue).toFixed(2));
       projecaoValorRestante.textContent = 'R$ ' + numberWithCommas(((profit + 1 ) * (itemsData.purchaseValue - itemsData.originalPriceSalesValue)).toFixed(2));
