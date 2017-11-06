@@ -4,9 +4,10 @@ var items = (function () {
   var modal              = document.querySelector('.modal');
   var modalCloseBtn      = document.querySelector('.modal__close-btn');
 
+  var modalSubtitle      = document.querySelector('.modal__title-categoria');
+  var modalTitle         = document.querySelector('.modal__subtitle-marca');
   var itemCode           = document.querySelector('.modal__code');
   var itemPreco          = document.querySelector('.modal__preco');
-  var itemCategoria      = document.querySelector('.modal__categoria');
   var itemDescricao      = document.querySelector('.modal__descricao');
   var itemCor            = document.querySelector('.modal__cor');
   var itemSexo           = document.querySelector('.modal__sexo');
@@ -48,15 +49,17 @@ var items = (function () {
     }
 
     function _toggleModal () {
+      itemNovoValorLucro.textContent = '0%';
       modal.classList.toggle('modal--show');
     }
 
     function _populateModal (data, code) {
       data.forEach( function(item) {
         if (item.code === code) {
+          modalTitle.textContent     = item.brand;
+          modalSubtitle.textContent  = item.description.category;
           itemCode.textContent       = item.code || 'N/A';
           itemPreco.textContent      = 'R$' + item.value.sold;
-          itemCategoria.textContent  = item.description.category || 'N/A';
           itemDescricao.textContent  = item.description.about || 'N/A';
           itemCor.textContent        = item.description.color || 'N/A';
           itemSexo.textContent       = item.description.size || 'N/A';
