@@ -127,21 +127,22 @@ var items = (function () {
 
           tableBody.append(newItemElement);
 
-          tdCode.textContent = item.code;
-          tdCode.setAttribute("class", "item-table__item-cod item-table__item-cell");
+          tdCode.textContent       = item.code;
           tdQuantidade.textContent = item.quantity.bought;
+          tdCategoria.textContent  = item.description.category || '-';
+          tdCor.textContent        = item.description.color || '-';
+          tdTamanho.textContent    = item.description.sex || '-';
+          tdSexo.textContent       = item.description.size || '-';
+          tdValor.textContent      = 'R$' + item.value.sold;
+          tdLucro.textContent      = (100 * Number(item.value.sold) / (Number(item.value.bought) * TAX * DOL) - 100).toFixed(0) + '%';
+
+          tdCode.setAttribute("class", "item-table__item-cod item-table__item-cell");
           tdQuantidade.setAttribute("class", "item-table__item-qtde item-table__item-cell");
-          tdCategoria.textContent = item.description.category || '-';
           tdCategoria.setAttribute("class", "item-table__item-categoria item-table__item-cell");
-          tdCor.textContent = item.description.color || '-';
           tdCor.setAttribute("class", "item-table__item-cor item-table__item-cell");
-          tdTamanho.textContent = item.description.sex || '-';
           tdTamanho.setAttribute("class", "item-table__item-tamanho item-table__item-cell");
-          tdSexo.textContent = item.description.size || '-';
           tdSexo.setAttribute("class", "item-table__item-sexo item-table__item-cell");
-          tdValor.textContent = 'R$' + item.value.sold;
           tdValor.setAttribute("class", "item-table__item-valor item-table__item-cell");
-          tdLucro.textContent = (100 * Number(item.value.sold) / (Number(item.value.bought) * TAX * DOL) - 100).toFixed(0) + '%';
           tdLucro.setAttribute("class", "item-table__item-lucro item-table__item-cell");
 
           newItemElement.append(tdCode, tdQuantidade, tdCategoria, tdCor, tdTamanho, tdSexo, tdValor, tdLucro);
